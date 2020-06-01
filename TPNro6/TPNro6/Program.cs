@@ -44,13 +44,64 @@ namespace TPNro6
         }
         */
 
-
-
-
-        static double Calculadora(double num1, double num2)
+        static double CalculadoraSimple(double num1, double num2)
         {
             Console.WriteLine("Ingrese el numero de la opciion a realizar");
             int opc = 1;  //lo inicializo solo para que ingrese al while
+            double result = 0;
+
+            while (opc != 0)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("1- Sumar");
+                Console.WriteLine("2- Restar");
+                Console.WriteLine("3- Multiplicar");
+                Console.WriteLine("4- Dividir");
+                Console.WriteLine("0- Salir");
+
+                opc = Convert.ToInt32(Console.ReadLine());
+                
+                if (opc < 5 && opc > 0)
+                {
+                    switch (opc)
+                    {
+                        case 1:
+                            result = num1 + num2;
+                            break;
+
+                        case 2:
+                            result = num1 - num2;
+                            break;
+
+                        case 3:
+                            result = num1 * num2;
+                            break;
+
+                        case 4:
+                            result = num1 / num2;
+                            break;
+
+                        case 0:
+                            opc = 0;
+                            break;
+                    }
+                }
+
+                if (opc > 0 && opc < 12)
+                {
+                    Console.WriteLine("\nEl resultado es: " + result);
+                }
+
+            }
+
+            return result;
+        }
+
+        static void Calculadora()
+        {
+            Console.WriteLine("Ingrese el numero de la opciion a realizar");
+            int opc = 1;  //lo inicializo solo para que ingrese al while
+            double num1 = 0, num2 = 0;
             double result = 0;
 
             while(opc != 0)
@@ -129,16 +180,20 @@ namespace TPNro6
                         break;
                 }
 
+                string strn1 = num1.ToString();
+                string strn2 = num2.ToString();
+
                 if (opc > 0 && opc < 12)
                 {
                     Console.WriteLine("\nEl resultado es: " + result);
+                    string sresult = result.ToString();
+                    Console.WriteLine("\nLa suma de " + strn1 + " y de " + strn2 + " es igual a: " + sresult);
                 }
 
                 MaxMin(num1, num2);
 
-                return result;
-
             }
+
         }
 
         static void MaxMin(double num1, double num2)
@@ -184,10 +239,107 @@ namespace TPNro6
 
             Console.WriteLine(CadenasConcatenadas);
 
-            //------------   -----------
+            //------------ Resultado en formato de Texto -----------
+            /*
+            Calculadora();
+
+            //------------- Recorrido ForEach ------------------
+
+            foreach(char s in CadenasConcatenadas)
+            {
+                Console.WriteLine("La letra es " + s);
+            }
+            */
+
+            //--------------------- Ocurrencia de una determinada palabra --------------------
+
+            /*
+            //Voy a tomar una palabra ingresada por el usuario para ver si esta contenida
+            //Para evitar posibles inconvenientes conviento la cadena a minuscula
+            cadena = "La ocurrencia de la, la, la";
+            cadena = cadena.ToLower();
+            //cadena = Console.ReadLine();
+
+           
+            string palabra = Console.ReadLine();
+
+            int tam = palabra.Length;
+
+            //Voy a ir extrayendo de la cadena desde la posicion inicial de la palabra hasta su longitud
+            //y guardare el resto, es decir desde la ultima letra en adelante
+
+            int conc = 0;
+            while (cadena.Contains(palabra))
+            {
+                cadena = cadena.Substring(cadena.IndexOf(palabra) + tam);
+                //cadena = cadena.Trim();
+                Console.WriteLine("El valor de la cadena es: " + cadena);
+                conc++;
+            }
+
+            Console.WriteLine("La cantidad de veces que aparece la palabra '" + palabra + "' es: " + conc);
+            */
+
+            //--------------------- Conversion a Minuscula y Mayuscula --------------------
+
+            cadena = "La cadena de texto";
+
+            cadena = cadena.ToUpper();
+            Console.WriteLine(cadena);
+
+            cadena = cadena.ToLower();
+            Console.WriteLine(cadena);
+
+            
+            //--------------------- Comparar cadenas --------------------
+
+            /*
+            string cad = Console.ReadLine();
+
+            if(String.Compare(cadena.ToLower(), cad.ToLower()) == 0)
+            {
+                Console.WriteLine("Son iguales?");
+            }else if((String.Compare(cadena.ToLower(), cad.ToLower()) == 0) == false)
+            {
+                Console.WriteLine("No son iguales");
+            }
+            */
+
+
+
+            //--------------------- Split --------------------
+
+            cadena = "La-cadena-esta-separada-por-guiones";
+
+            string[] ncadena = cadena.Split("-");
+
+            foreach (string c in ncadena)
+            {
+                Console.WriteLine("Cadena separada: " + c);
+            }
+
+            //--------------------- Operar desde una cadena --------------------
+
+
+            //Consultar
+
+            cadena = "52 + 25";
+
+            ncadena = cadena.Split("+");
+            ncadena[0] = ncadena[0].Trim();
+            ncadena[1] = ncadena[1].Trim();
+
+            double result = CalculadoraSimple(Convert.ToDouble(ncadena[0]), Convert.ToDouble(ncadena[1]));
+
+            Console.WriteLine("El resultado es: {0}", result);
+
+
         }
 
+        static void ExpresionesRegulares()
+        {
 
+        }
 
 
 
